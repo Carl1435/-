@@ -1,0 +1,219 @@
+{
+  "id": "1795789",
+  "name": "element",
+  "font_family": "iconfont",
+  "css_prefix_text": "myel-icon-kc",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3080469",
+      "name": "短竖线",
+      "font_class": "icon-test",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "5423434",
+      "name": "铃声",
+      "font_class": "o",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "5474841",
+      "name": "耳机",
+      "font_class": "erji",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "6267227",
+      "name": "新闻",
+      "font_class": "xinwen",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "6468299",
+      "name": "最小化",
+      "font_class": "zuixiaohua",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "7408039",
+      "name": "还原",
+      "font_class": "huanyuan",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "7789328",
+      "name": "最小化",
+      "font_class": "zuixiaohua1",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "12316675",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "12900741",
+      "name": "衣服",
+      "font_class": "yifu",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "14163831",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "1661090",
+      "name": "港股通",
+      "font_class": "ganggutong",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "3425312",
+      "name": "期货-点击",
+      "font_class": "qihuo-dianji",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "3425317",
+      "name": "期货-正常",
+      "font_class": "qihuo-zhengchang",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "6114340",
+      "name": "icon_沪深",
+      "font_class": "icon_hushen",
+      "unicode": "e8cc",
+      "unicode_decimal": 59596
+    },
+    {
+      "icon_id": "6114352",
+      "name": "icon_美股",
+      "font_class": "icon_meigu",
+      "unicode": "e8ce",
+      "unicode_decimal": 59598
+    },
+    {
+      "icon_id": "12601019",
+      "name": "ai",
+      "font_class": "ai",
+      "unicode": "e68a",
+      "unicode_decimal": 59018
+    },
+    {
+      "icon_id": "12804276",
+      "name": "外汇系统",
+      "font_class": "waihuixitong",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "13084506",
+      "name": "环球",
+      "font_class": "huanqiu",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "13177295",
+      "name": "沪深港通",
+      "font_class": "hushengangtong",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "14113878",
+      "name": "爱心",
+      "font_class": "aixin",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "14294801",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "1836298",
+      "name": "策略",
+      "font_class": "strategy",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "2336500",
+      "name": "资讯",
+      "font_class": "cloud-information",
+      "unicode": "e6bb",
+      "unicode_decimal": 59067
+    },
+    {
+      "icon_id": "100560",
+      "name": "股票",
+      "font_class": "gupiao",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "2137002",
+      "name": "股票-我的",
+      "font_class": "gupiao-wode",
+      "unicode": "e681",
+      "unicode_decimal": 59009
+    },
+    {
+      "icon_id": "2137004",
+      "name": "股票-行情",
+      "font_class": "gupiao-hangqing",
+      "unicode": "e682",
+      "unicode_decimal": 59010
+    },
+    {
+      "icon_id": "2137010",
+      "name": "股票-组合点击态",
+      "font_class": "gupiao-zuhedianjitai",
+      "unicode": "e685",
+      "unicode_decimal": 59013
+    },
+    {
+      "icon_id": "2326337",
+      "name": "交易",
+      "font_class": "tubiaozhizuomoban-",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "12411595",
+      "name": "消 息",
+      "font_class": "xiaoxi-copy",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "14390172",
+      "name": "量化",
+      "font_class": "lianghua",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    }
+  ]
+}

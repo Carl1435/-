@@ -1,0 +1,449 @@
+<template>
+    <div style="height:580px;background:-webkit-linear-gradient(top,rgb(241, 244, 248),white);position:relative">
+        <!-- <el-button size="mini" style="position:absolute;z-index: 99;top:5px;background-color:rgba(0,0,0,0);" @click="change(businessname)">{{businessname}}</el-button> -->
+        <el-dropdown style="position:absolute;z-index: 99;top:10px;background-color:rgba(0,0,0,0);">
+        <span class="el-dropdown-link">
+            {{businessname}}<i class="el-icon-arrow-down el-icon--right"></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item disabled>所有板块</el-dropdown-item>
+            <el-dropdown-item divided><button @click="change(businessname,1)" class="but">行业板块</button></el-dropdown-item>
+            <el-dropdown-item><button @click="change(businessname,2)" class="but">概念板块</button></el-dropdown-item>
+            <el-dropdown-item><button @click="change(businessname,3)" class="but">地域板块</button></el-dropdown-item>
+        </el-dropdown-menu>
+        </el-dropdown>
+        <el-tabs v-model="message" @tab-click="handleClick" width="500px" >
+        <el-tab-pane label="A股热点" name="1"><dataMain></dataMain></el-tab-pane>
+        <el-tab-pane label="全部A股" name="2"><stockshow kind="1" :bk="businessname" :kind2="buskind"></stockshow></el-tab-pane>
+        <el-tab-pane label="上证B股" name="3"><stockshow kind="2" :bk="businessname" :kind2="buskind"></stockshow></el-tab-pane>
+        <el-tab-pane label="上海主板" name="4"><stockshow kind="3" :bk="businessname" :kind2="buskind"></stockshow></el-tab-pane>
+        <el-tab-pane label="深证主板" name="5"><stockshow kind="4" :bk="businessname" :kind2="buskind"></stockshow></el-tab-pane>
+        <el-tab-pane label="中小企业" name="6"><stockshow kind="5" :bk="businessname" :kind2="buskind"></stockshow></el-tab-pane>
+        <el-tab-pane label="创业板" name="7"><stockshow kind="6" :bk="businessname" :kind2="buskind"></stockshow></el-tab-pane>
+        <el-tab-pane label="科创版" name="8"><stockshow kind="7" :bk="businessname" :kind2="buskind"></stockshow></el-tab-pane>
+        </el-tabs>
+        <div v-show="show" class="tanchuan" @click="change('所有板块')" style="text-align:left;overflow-y:auto;padding-left:8px;background-color:white">
+            <span v-for="item in business" :key="item" >
+                <span v-show="item.length==1" style="font-size:25px;margin-left:5px;margin-top:10px"><br>{{item}}<br></span>
+                <button v-if="item.length!=1" @click="change(item)" style="z-index:99;border:0;background-color:rgba(0,0,0,0)">{{item}}</button>
+            </span>
+        </div>
+    </div>
+   
+</template>
+
+<script>
+import dataMain from './dataMain.vue'
+import stockshow from './stockshow.vue'
+	export default{
+        name:'hsMain',
+        data(){
+            return{
+                msg1:'',
+                show:false,
+                buskind:'1',
+                businessname:"所有板块",
+                business:"",
+                hybusiness:[
+'A',
+'安防设备',
+'B',
+'保险',
+'包装材料',
+'玻璃陶瓷',
+'C',
+'材料行业',
+'船舶制造',
+'D',
+'多元金融',
+'电力行业',
+'电信运营',
+'电子信息',
+'电子元件',
+'F',
+'房地产',
+'纺织服装',
+'G',
+'公用事业',
+'国际贸易',
+'工程建设',
+'工艺商品',
+'港口水运',
+'贵金属',
+'钢铁行业',
+'高速公路',
+'H',
+'化肥行业',
+'化工行业',
+'化纤行业',
+'环保工程',
+'航天航空',
+'J',
+'交运设备',
+'交运物流',
+'家电行业',
+'机械行业',
+'金属制品',
+'L',
+'旅游酒店',
+'M',
+'木业家具',
+'民航机场',
+'煤炭采选',
+'N',
+'农牧饲渔',
+'农药兽药',
+'酿酒行业',
+'Q',
+'券商信托',
+'汽车行业',
+'R',
+'软件服务',
+'S',
+'商业百货',
+'塑胶制品',
+'水泥建材',
+'石油行业',
+'输配电气',
+'食品饮料',
+'T',
+'通讯行业',
+'W',
+'文化传媒',
+'文教休闲',
+'Y',
+'仪器仪表',
+'医疗行业',
+'医药制造',
+'园林工程',
+'有色金属',
+'银行',
+'Z',
+'专用设备',
+'珠宝首饰',
+'综合行业',
+'装修装饰',
+'造纸印刷'],
+                gnbusiness:[
+"#",
+"2025规划",
+"3D玻璃",
+"3D打印",
+"3D摄像头",
+"5G概念",
+"A",
+"AB股",
+"AH股",
+"阿里概念",
+"阿兹海默",
+"B",
+"B股",
+"北斗导航",
+"北京冬奥",
+"半导体",
+"标普概念",
+"滨海新区",
+"病毒防治",
+"白酒",
+"百度概念",
+"贬值受益",
+"边缘计算",
+"C",
+"C2M概念",
+"CRO",
+"传感器",
+"充电桩",
+"创投",
+"创业板综",
+"创业成份",
+"参股保险",
+"参股期货",
+"参股券商",
+"参股银行",
+"彩票概念",
+"成渝特区",
+"次新股",
+"草甘膦",
+"超导概念",
+"超级电容",
+"超级品牌",
+"超级真菌",
+"超清视频",
+"车联网",
+"长江三角",
+"长寿药",
+"D",
+"东北振兴",
+"代糖概念",
+"刀片电池",
+"单抗概念",
+"地热能",
+"地塞米松",
+"地摊经济",
+"大飞机",
+"大数据",
+"抖音小店",
+"氮化镓",
+"独角兽",
+"独家药品",
+"电商概念",
+"电子竞技",
+"电子烟",
+"第三代半导体",
+"E",
+"EDA概念",
+"ETC",
+"二胎概念",
+"F",
+"分拆预期",
+"富时概念",
+"富士康",
+"氟化工",
+"辅助生殖",
+"风能",
+"G",
+"GDR概念",
+"光刻胶",
+"共享经济",
+"国产软件",
+"国产芯片",
+"国家安防",
+"国企改革",
+"工业4.0",
+"工业大麻",
+"工业互联",
+"广电",
+"肝素概念",
+"股权激励",
+"股权转让",
+"高送转",
+"H",
+"HIT电池",
+"HS300_",
+"互联金融",
+"互联医疗",
+"化工原料",
+"华为概念",
+"核能核电",
+"氦气概念",
+"沪股通",
+"沪企改革",
+"海工装备",
+"海绵城市",
+"海洋经济",
+"湖北自贸",
+"航母概念",
+"蝗虫防治",
+"鸿蒙概念",
+"黄金概念",
+"I",
+"IPO受益",
+"IPv6",
+"J",
+"举牌概念",
+"京东金融",
+"京津冀",
+"健康中国",
+"军工",
+"军民融合",
+"基本金属",
+"基金重仓",
+"基因测序",
+"机构重仓",
+"精准医疗",
+"节能环保",
+"进口博览",
+"降解塑料",
+"鸡肉概念",
+"K",
+"口罩",
+"可燃冰",
+"壳资源",
+"快递概念",
+"L",
+"LED",
+"冷链物流",
+"垃圾分类",
+"流感",
+"蓝宝石",
+"量子通信",
+"锂电池",
+"M",
+"MicroLED",
+"MiniLED",
+"MLCC",
+"MSCI大盘",
+"MSCI中国",
+"MSCI中盘",
+"免税概念",
+"免疫治疗",
+"煤化工",
+"盲盒经济",
+"蚂蚁概念",
+"N",
+"农业种植",
+"纳米银",
+"O",
+"OLED",
+"P",
+"PCB",
+"PPP模式",
+"屏下摄像",
+"苹果概念",
+"Q",
+"QFII重仓",
+"全息技术",
+"券商概念",
+"区块链",
+"氢能源",
+"汽车拆解",
+"青蒿素",
+"R",
+"RCS概念",
+"乳业",
+"人工智能",
+"人脑工程",
+"人造肉",
+"燃料电池",
+"融资融券",
+"S",
+"ST概念",
+"三板精选",
+"上海自贸",
+"上证180_",
+"上证380",
+"上证50_",
+"商汤概念",
+"手游概念",
+"数据中心",
+"数字货币",
+"数字孪生",
+"水利建设",
+"深成500",
+"深股通",
+"深证100R",
+"深圳特区",
+"生态农业",
+"生物识别",
+"生物疫苗",
+"石墨烯",
+"社保重仓",
+"纾困概念",
+"赛马概念",
+"送转预期",
+"食品安全",
+"T",
+"体外诊断",
+"体育产业",
+"土地流转",
+"天基互联",
+"天然气",
+"太阳能",
+"特高压",
+"特斯拉",
+"胎压监测",
+"退税商店",
+"通用航空",
+"钛白粉",
+"铁路基建"
+                ],
+                dybusiness:[
+                    "A",
+"安徽板块",
+"B",
+"北京板块",
+"C",
+"重庆板块",
+"F",
+"福建板块",
+"G",
+"广东板块",
+"广西板块",
+"甘肃板块",
+"贵州板块",
+"H",
+"河北板块",
+"河南板块",
+"海南板块",
+"湖北板块",
+"湖南板块",
+"黑龙江",
+"J",
+"吉林板块",
+"江苏板块",
+"江西板块",
+"L",
+"辽宁板块",
+"N",
+"内蒙古",
+"宁夏板块",
+"Q",
+"青海板块",
+"S",
+"上海板块",
+"四川板块",
+"山东板块",
+"山西板块",
+"陕西板块",
+"T",
+"天津板块",
+"X",
+"新疆板块",
+"西藏板块",
+"Y",
+"云南板块",
+"Z",
+"浙江板块"
+                ]
+};
+            
+        },
+        props:['message'],
+        mounted:function(){
+            this.msg1=this.message;
+        },
+        methods:{
+      change(name,kind){
+          this.show=true;
+          if(kind)
+          this.buskind=kind;
+          if(kind==1)
+          {
+              this.business=this.hybusiness;
+          }
+          else if(kind==2)
+          {this.business=this.gnbusiness}
+          else if(kind==3)
+          {this.business=this.dybusiness}
+          else
+          this.show=false
+          this.businessname=name;
+          console.log(this.show);
+          event.stopPropagation();
+      }
+        },
+        components:{dataMain,stockshow},
+    }
+</script>
+<style scoped>
+.tanchuan{
+    z-index: 99;
+    position:absolute;
+    width:50%;
+    height:30em;
+    left:25%;
+    top:10%;
+    border:0.1px solid rgb(77, 75, 75);
+    box-shadow: -2px -2px 1px rgb(129, 125, 125);
+    background-color: white;
+}
+.but{
+    height: 30px;
+    width:80px;
+    border: 0;
+    background-color: rgba(0,0,0,0);
+    font-family:Arial, 宋体, sans-serif;
+    font-weight: 600;
+}
+
+</style>
